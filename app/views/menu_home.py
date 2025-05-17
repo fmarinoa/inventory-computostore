@@ -3,6 +3,7 @@ from app.views.products_view import mostrar_menu_gestion_productos
 
 def mostrar_menu_home():
     while True:
+        limpiar_pantalla() #se agrego
         print("\n===== COMPUTOSTORE - MENÚ PRINCIPAL =====")
         print("1. Gestión de productos")
         print("2. Control y alertas de stock")
@@ -16,6 +17,7 @@ def mostrar_menu_home():
         opcion = input("Selecciona una opción (1-8): ")
 
         if opcion == "1":
+            limpiar_pantalla() #se agrego
             mostrar_menu_gestion_productos()
         # elif opcion == "2":
         #     mostrar_menu_control_stock()
