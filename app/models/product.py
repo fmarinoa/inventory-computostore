@@ -1,11 +1,10 @@
 from datetime import datetime
 from decimal import Decimal
+from abc import ABC
 
-
-class Product:
+class Product(ABC):
     def __init__(self, product_code: str, brand: str, model: str, serial_number: str, name: str, description: str,
-                 stock: int, price: Decimal, memory_ram: int = None, memory_rom: int = None, processor: str = None,
-                 date_creation: datetime = None):
+                 stock: int, price: Decimal, date_creation: datetime = None):
         self.__product_code = product_code
         self.__brand = brand
         self.__model = model
@@ -14,9 +13,6 @@ class Product:
         self.__description = description
         self.__stock = stock
         self.__price = price
-        self.__memory_ram = memory_ram
-        self.__memory_rom = memory_rom
-        self.__processor = processor
         self.__date_update = datetime.now()
         self.__date_creation = date_creation
 
@@ -83,30 +79,6 @@ class Product:
     @price.setter
     def price(self, price: str):
         self.__price = price
-
-    @property
-    def memory_ram(self):
-        return self.__memory_ram
-
-    @memory_ram.setter
-    def memory_ram(self, memory_ram: str):
-        self.__memory_ram = memory_ram
-
-    @property
-    def memory_rom(self):
-        return self.__memory_rom
-
-    @memory_rom.setter
-    def memory_rom(self, memory_rom: str):
-        self.__memory_rom = memory_rom
-
-    @property
-    def processor(self):
-        return self.__processor
-
-    @processor.setter
-    def processor(self, processor: str):
-        self.__processor = processor
 
     @property
     def date_update(self):
