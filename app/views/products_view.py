@@ -1,8 +1,8 @@
 from decimal import Decimal
 
+from app.data.store import main_products
 from app.models.product import ProductSoftware, ProductHardware
 from app.utils.validators import ProductValidators
-from main import main_products
 
 
 def mostrar_menu_gestion_productos():

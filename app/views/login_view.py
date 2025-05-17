@@ -1,5 +1,6 @@
 from app.exceptions.auth_exceptions import IncorrectPasswordError, UserNotFoundError, UserInactiveError
 from app.models.user import User
+from app.utils.console_util import limpiar_pantalla
 from app.views.menu_home import mostrar_menu_home
 
 
@@ -17,5 +18,6 @@ def login_view(user: User):
 
     if not user.verify_status():
         raise UserInactiveError()
+
     limpiar_pantalla()  #se agrego
     mostrar_menu_home()
