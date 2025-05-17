@@ -4,6 +4,7 @@ from app.views.menu_home import mostrar_menu_home
 
 
 def login_view(user: User):
+    limpiar_pantalla()  #se agrego
     print("\n--- Iniciar Sesión ---")
     username = input("Usuario: ")
     password = input("Contraseña: ")
@@ -16,5 +17,5 @@ def login_view(user: User):
 
     if not user.verify_status():
         raise UserInactiveError()
-
+    limpiar_pantalla()  #se agrego
     mostrar_menu_home()
