@@ -21,13 +21,116 @@ def mostrar_menu_gestion_productos():
             registrar_producto()
         elif op == "2":
             listar_productos()
+        elif op == "3":
+            modificar_producto()
+        # elif op == "4":
+        #     eliminar_producto()
+        # elif op == "5":
+        #     buscar_producto_por_codigo()
         elif op == "6":
             break
         else:
             print("Opción no válida.")
 
 
+def modificar_producto():
+    id_producto = input("Ingrese el ID del producto a modificar: ")
+    producto_encontrado = _buscar_producto_por_id(id_producto)
+
+    if producto_encontrado is None:
+        print("Producto no encontrado.")
+        return
+
+    print(f"Producto encontrado: {producto_encontrado.name}")
+
+    nuevos_datos = _obtener_nuevos_datos_producto(producto_encontrado)
+    _actualizar_producto(producto_encontrado, nuevos_datos)
+
+    print(f"Producto modificado con éxito: {producto_encontrado}")
+
+
+def _buscar_producto_por_id(id_producto):
+    for p in main_products:
+        if p.id_product == id_producto:
+            return p
+    return None
+
+
+def _obtener_nuevos_datos_producto(producto):
+    print("Ingrese los nuevos datos del producto (deje en blanco para no modificar):")
+    nombre = input(f"Nombre ({producto.name}): ")
+    descripcion = input(f"Descripción ({producto.description}): ")
+    marca = input(f"Marca ({producto.brand}): ")
+    modelo = input(f"Modelo ({producto.model}): ")
+    numero_serie = input(f"Número de serie ({producto.serial_number}): ")
+    stock = input(f"Stock ({producto.stock}): ")
+    precio = input(f"Precio ({producto.price}): ")
+    minimo_stock = input(f"Stock mínimo ({producto.minimum_stock}): ")
+
+    stock = ProductValidators.validate_stock(stock) if stock else None
+    precio = ProductValidators.validate_price(precio) if precio else None
+
+    tipo_producto = 1 if isinstance(producto, ProductSoftware) else 2
+    tipo_licencia = None
+    ram = None
+    almacenamiento = None
+    procesador = None
+
+    if tipo_producto == 1:
+        tipo_licencia = input(f"Tipo de licencia ({producto.type_license}): ")
+    else:
+        ram = input(f"RAM ({producto.ram}): ")
+        almacenamiento = input(f"Almacenamiento ({producto.storage}): ")
+        procesador = input(f"Procesador ({producto.processor}): ")
+
+    return {
+        "nombre": nombre,
+        "descripcion": descripcion,
+        "marca": marca,
+        "modelo": modelo,
+        "numero_serie": numero_serie,
+        "stock": stock,
+        "precio": precio,
+        "minimo_stock": minimo_stock,
+        "tipo_producto": tipo_producto,
+        "tipo_licencia": tipo_licencia,
+        "ram": ram,
+        "almacenamiento": almacenamiento,
+        "procesador": procesador
+    }
+
+
+def _actualizar_producto(producto, datos):
+    if datos["nombre"]:
+        producto.name = datos["nombre"]
+    if datos["descripcion"]:
+        producto.description = datos["descripcion"]
+    if datos["marca"]:
+        producto.brand = datos["marca"]
+    if datos["modelo"]:
+        producto.model = datos["modelo"]
+    if datos["numero_serie"]:
+        producto.serial_number = datos["numero_serie"]
+    if datos["stock"]:
+        producto.stock = datos["stock"]
+    if datos["precio"]:
+        producto.price = datos["precio"]
+    if datos["minimo_stock"]:
+        producto.minimum_stock = datos["minimo_stock"]
+
+    if datos["tipo_producto"] == 1 and datos["tipo_licencia"]:
+        producto.type_license = datos["tipo_licencia"]
+    elif datos["tipo_producto"] == 2:
+        if datos["ram"]:
+            producto.ram = datos["ram"]
+        if datos["almacenamiento"]:
+            producto.storage = datos["almacenamiento"]
+        if datos["procesador"]:
+            producto.processor = datos["procesador"]
+
+
 def listar_productos():
+    print("Listado de productos")
     for p in main_products:
         print(p)
 
@@ -77,6 +180,7 @@ def registrar_producto():
         ram = input("Ingrese la cantidad de RAM del hardware: ")
         almacenamiento = input("Ingrese la capacidad de almacenamiento del hardware: ")
         procesador = input("Ingrese el tipo de procesador del hardware: ")
+
         product = ProductHardware(
             id_product=id_producto,
             name=nombre,
