@@ -2,7 +2,7 @@ from decimal import Decimal
 
 from app.models.product import ProductSoftware, ProductHardware
 from app.utils.validators import ProductValidators
-from main import products
+from main import main_products
 
 
 def mostrar_menu_gestion_productos():
@@ -14,15 +14,22 @@ def mostrar_menu_gestion_productos():
         print("4. Eliminar producto")
         print("5. Buscar producto por código")
         print("6. Volver al menú principal")
-        op = input("Selecciona una opción: ")
+
+        op = input("Selecciona una opción (1-6): ")
 
         if op == "1":
             registrar_producto()
-
+        elif op == "2":
+            listar_productos()
         elif op == "6":
             break
         else:
             print("Opción no válida.")
+
+
+def listar_productos():
+    for p in main_products:
+        print(p)
 
 
 def registrar_producto():
@@ -85,6 +92,6 @@ def registrar_producto():
             processor=procesador
         )
 
-    products.append(product)
+    main_products.append(product)
 
     print(f"Producto {product.name} registrado con éxito.")
