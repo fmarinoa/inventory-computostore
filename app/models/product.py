@@ -21,6 +21,7 @@ class Product(ABC):
         self.__date_update = datetime.now()
         self.__provider = None
         self.__category = None
+        self.__purchases = []
 
     @property
     def id_product(self):
@@ -125,6 +126,14 @@ class Product(ABC):
     @category.setter 
     def category(self, category):
         self.__category = category
+        
+    @property
+    def purchases(self):
+        return self.__purchases
+    
+    @purchases.setter
+    def purchases(self, purchases):
+        self.__purchases = purchases
 
     def __str__(self):
         date_str = self.date_update.strftime("%d/%m/%Y %H:%M:%S") if isinstance(self.date_update, datetime) else str(self.date_update)
@@ -133,7 +142,8 @@ class Product(ABC):
             f"Marca: {self.brand}, Modelo: {self.model}, Número de serie: {self.serial_number}, "
             f"Stock: {self.stock}, Precio: {self.price}, Tipo de producto: {self.type_product}, "
             f"Stock mínimo: {self.minimum_stock}, Última actualización: {date_str}, Proveedor: {self.provider}, "
-            f"Categoría: {self.category}"
+            f"Categoría: {self.category}, Compras: {len(self.purchases)}"
+            f" ({', '.join([str(purchase) for purchase in self.purchases])})"
         )
 
     @abstractmethod
