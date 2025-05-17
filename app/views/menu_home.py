@@ -26,6 +26,7 @@ def mostrar_menu_home():
         else:
             print("Opción inválida. Intenta nuevamente.")
 
+
 # Menús existentes
 
 def mostrar_menu_gestion_productos():
@@ -52,6 +53,7 @@ def mostrar_menu_historial():
     print("2. Filtrar historial por fecha o acción")
     print("3. Volver al menú principal")
     input("Presiona Enter para continuar...")
+
 
 # Nuevos menús
 

@@ -152,28 +152,28 @@ class Product(ABC):
 
     def add_stock(self, amount: int):
         amount = ProductValidators.validate_stock(amount)
-        self.__stock += amount
-        self.__date_update = datetime.now()
+        self.stock += amount
+        self.date_update = datetime.now()
 
     def remove_stock(self, amount: int):
         amount = ProductValidators.validate_stock(amount)
-        if self.__stock - amount < 0:
+        if self.stock - amount < 0:
             raise ValueError("No hay suficiente stock para realizar esta operación.")
 
-        self.__stock -= amount
-        self.__date_update = datetime.now()
+        self.stock -= amount
+        self.date_update = datetime.now()
 
     def update_stock(self, stock: int):
         stock = ProductValidators.validate_stock(stock)
-        self.__stock = stock
-        self.__date_update = datetime.now()
+        self.stock = stock
+        self.date_update = datetime.now()
 
     def assign_discount(self, discount):
         if not isinstance(discount, (int, float)):
             raise ValueError("El descuento debe ser un número.")
 
-        self.__price -= ProductValidators.validate_price(Decimal(discount / 100) * self.price)
-        self.__date_update = datetime.now()
+        self.price -= ProductValidators.validate_price(Decimal(discount / 100) * self.price)
+        self.date_update = datetime.now()
 
 
 class ProductSoftware(Product):
