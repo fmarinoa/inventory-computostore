@@ -1,3 +1,4 @@
+from app.exceptions.auth_exceptions import AuthenticationError
 from app.models.user import User
 
 from app.views.login_view import login_view
@@ -11,7 +12,10 @@ def main_menu(user: User):
         opcion = input("Seleccione una opción: ")
 
         if opcion == "1":
-            login_view(user)
+            try:
+                login_view(user)
+            except AuthenticationError as e:
+                print(e)
         elif opcion == "2":
             print("¡Hasta luego!")
             break

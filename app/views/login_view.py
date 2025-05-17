@@ -9,12 +9,12 @@ def login_view(user: User):
     password = input("Contraseña: ")
     # Aquí deberías validar el usuario con tu controlador real
     if not user.verify_user(username):
-        print(UserNotFoundError())
+        raise UserNotFoundError()
 
     if not user.verify_password(password):
-        print(IncorrectPasswordError())
+        raise IncorrectPasswordError()
 
     if not user.verify_status():
-        print(UserInactiveError())
+        raise UserInactiveError()
 
     mostrar_menu_home()
