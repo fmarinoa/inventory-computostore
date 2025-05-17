@@ -23,14 +23,26 @@ def mostrar_menu_gestion_productos():
             listar_productos()
         elif op == "3":
             modificar_producto()
-        # elif op == "4":
-        #     eliminar_producto()
+        elif op == "4":
+            eliminar_producto()
         # elif op == "5":
         #     buscar_producto_por_codigo()
         elif op == "6":
             break
         else:
             print("Opción no válida.")
+
+
+def eliminar_producto():
+    id_producto = input("Ingrese el ID del producto a eliminar: ")
+    producto_encontrado = _buscar_producto_por_id(id_producto)
+
+    if producto_encontrado is None:
+        print("Producto no encontrado.")
+        return
+
+    main_products.remove(producto_encontrado)
+    print(f"Producto {producto_encontrado.name} eliminado con éxito.")
 
 
 def modificar_producto():
@@ -101,31 +113,31 @@ def _obtener_nuevos_datos_producto(producto):
 
 
 def _actualizar_producto(producto, datos):
-    if datos["nombre"]:
+    if datos["nombre"] is not None:
         producto.name = datos["nombre"]
-    if datos["descripcion"]:
+    if datos["descripcion"] is not None:
         producto.description = datos["descripcion"]
-    if datos["marca"]:
+    if datos["marca"] is not None:
         producto.brand = datos["marca"]
-    if datos["modelo"]:
+    if datos["modelo"] is not None:
         producto.model = datos["modelo"]
-    if datos["numero_serie"]:
+    if datos["numero_serie"] is not None:
         producto.serial_number = datos["numero_serie"]
-    if datos["stock"]:
+    if datos["stock"] is not None:
         producto.stock = datos["stock"]
-    if datos["precio"]:
+    if datos["precio"] is not None:
         producto.price = datos["precio"]
-    if datos["minimo_stock"]:
+    if datos["minimo_stock"] is not None:
         producto.minimum_stock = datos["minimo_stock"]
 
-    if datos["tipo_producto"] == 1 and datos["tipo_licencia"]:
+    if datos["tipo_producto"] == 1 and datos["tipo_licencia"] is not None:
         producto.type_license = datos["tipo_licencia"]
     elif datos["tipo_producto"] == 2:
-        if datos["ram"]:
+        if datos["ram"] is not None:
             producto.ram = datos["ram"]
-        if datos["almacenamiento"]:
+        if datos["almacenamiento"] is not None:
             producto.storage = datos["almacenamiento"]
-        if datos["procesador"]:
+        if datos["procesador"] is not None:
             producto.processor = datos["procesador"]
 
 
