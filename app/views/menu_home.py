@@ -1,3 +1,5 @@
+from app.utils.console_util import limpiar_pantalla
+from app.views.control_stock_view import mostrar_menu_control_stock
 from app.views.products_view import mostrar_menu_gestion_productos
 
 
@@ -7,20 +9,19 @@ def mostrar_menu_home():
         print("\n===== COMPUTOSTORE - MENÚ PRINCIPAL =====")
         print("1. Gestión de productos")
         print("2. Control y alertas de stock")
-        print("3. Ver historial de movimientos")
+        print("3. Gestión de movimientos/compras")
         print("4. Gestión de categorías")
         print("5. Gestión de proveedores")
         print("6. Gestión de clientes")
-        print("7. Gestión de usuarios")
-        print("8. Salir del sistema")
+        print("7. Salir del sistema")
 
-        opcion = input("Selecciona una opción (1-8): ")
+        opcion = input("Selecciona un opción (1-7): ")
 
+        limpiar_pantalla() #se agrego
         if opcion == "1":
-            limpiar_pantalla() #se agrego
             mostrar_menu_gestion_productos()
-        # elif opcion == "2":
-        #     mostrar_menu_control_stock()
+        elif opcion == "2":
+            mostrar_menu_control_stock()
         # elif opcion == "3":
         #     mostrar_menu_historial()
         # elif opcion == "4":
