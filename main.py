@@ -1,30 +1,25 @@
-import os
-import sys
-import tkinter as tk
+from app.models.user import User
 
-from dotenv import load_dotenv
+from app.views.login_view import login_view
 
 
-def resource_path(relative_path):
-    try:
-        base_path = sys._MEIPASS
-    except AttributeError:
-        base_path = os.path.abspath(".")
-    return os.path.join(base_path, relative_path)
+def main_menu(user: User):
+    while True:
+        print("\n=== Inventario de Productos ===")
+        print("1. Iniciar Sesión")
+        print("2. Salir")
+        opcion = input("Seleccione una opción: ")
 
+        if opcion == "1":
+            login_view(user)
+        elif opcion == "2":
+            print("¡Hasta luego!")
+            break
+        else:
+            print("Opción no válida. Intente de nuevo.")
 
-load_dotenv(resource_path(".env"))  # Esto carga las variables desde .env
-
-"""
-Archivo principal para iniciar la aplicación Inventory ComputoStore.
-"""
-
-if not os.getenv("MONGO_URI") or not os.getenv("MONGO_DB_NAME"):
-    raise EnvironmentError("Falta la variable de entorno MONGO_URI o MONGO_DB_NAME en el archivo .env")
 
 if __name__ == "__main__":
-    from app.views.login_view import LoginView
+    user = User("admin", "admin123", "Administrador", "admin@gmail.com", "admin")
 
-    root = tk.Tk()
-    app = LoginView(root)
-    root.mainloop()
+    main_menu(user)

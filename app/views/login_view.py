@@ -1,0 +1,17 @@
+from app.exceptions.auth_exceptions import IncorrectPasswordError, UserNotFoundError, UserInactiveError
+from app.models.user import User
+
+
+def login_view(user: User):
+    print("\n--- Iniciar Sesión ---")
+    username = input("Usuario: ")
+    password = input("Contraseña: ")
+    # Aquí deberías validar el usuario con tu controlador real
+    if not user.verify_user(username):
+        print(UserNotFoundError())
+
+    if not user.verify_password(password):
+        print(IncorrectPasswordError())
+
+    if not user.verify_status():
+        print(UserInactiveError())
