@@ -3,6 +3,8 @@ from app.models.user import User
 
 from app.views.login_view import login_view
 
+products = []
+
 
 def main_menu(user: User):
     while True:

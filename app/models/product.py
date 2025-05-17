@@ -9,11 +9,11 @@ class Product(ABC):
     def __init__(self, id_product: str, name: str, description: str, brand: str, model: str, serial_number: str,
                  stock: int, price: Decimal, type_product: str, minimum_stock: int = 0):
         self.__id_product = id_product
+        self.__name = name
+        self.__description = description
         self.__brand = brand
         self.__model = model
         self.__serial_number = serial_number
-        self.__name = name
-        self.__description = description
         self.__stock = stock
         self.__price = price
         self.__type_product = type_product
