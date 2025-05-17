@@ -19,6 +19,8 @@ class Product(ABC):
         self.__type_product = type_product
         self.__minimum_stock = minimum_stock
         self.__date_update = datetime.now()
+        self.__provider = None
+        self.__category = None
 
     @property
     def id_product(self):
@@ -108,13 +110,30 @@ class Product(ABC):
     def date_update(self, date_update: str):
         self.__date_update = date_update
 
+    @property
+    def provider(self):
+        return self.__provider
+    
+    @provider.setter
+    def provider(self, provider):
+        self.__provider = provider
+        
+    @property
+    def category(self):
+        return self.__category
+    
+    @category.setter 
+    def category(self, category):
+        self.__category = category
+
     def __str__(self):
         date_str = self.date_update.strftime("%d/%m/%Y %H:%M:%S") if isinstance(self.date_update, datetime) else str(self.date_update)
         return (
             f"ID: {self.id_product}, Nombre: {self.name}, Descripción: {self.description}, "
             f"Marca: {self.brand}, Modelo: {self.model}, Número de serie: {self.serial_number}, "
             f"Stock: {self.stock}, Precio: {self.price}, Tipo de producto: {self.type_product}, "
-            f"Stock mínimo: {self.minimum_stock}, Última actualización: {date_str}"
+            f"Stock mínimo: {self.minimum_stock}, Última actualización: {date_str}, Proveedor: {self.provider}, "
+            f"Categoría: {self.category}"
         )
 
     @abstractmethod
