@@ -2,14 +2,13 @@ from datetime import datetime
 
 
 class User:
-    def __init__(self, username: str, password_hash: str, name: str, email: str, role: str = "admin",
-                 date_creation: datetime = None):
+    def __init__(self, username: str, password: str, name: str, email: str, role: str = "admin"):
         self.__username = username
-        self.__password_hash = password_hash
+        self.__password = password
         self.__name = name
         self.__email = email
         self.__role = role
-        self.__date_creation = date_creation
+        self.__date_creation = datetime.now()
         self.__status = True
 
     @property
@@ -21,12 +20,12 @@ class User:
         self.__username = username
 
     @property
-    def password_hash(self):
-        return self.__password_hash
+    def password(self):
+        return self.__password
 
-    @password_hash.setter
-    def password_hash(self, password_hash: str):
-        self.__password_hash = password_hash
+    @password.setter
+    def password(self, password: str):
+        self.__password = password
 
     @property
     def name(self):
@@ -67,3 +66,15 @@ class User:
     @status.setter
     def status(self, status: bool):
         self.__status = status
+
+    def __str__(self):
+        date_str = self.date_creation.strftime("%d/%m/%Y %H:%M:%S") if isinstance(self.date_creation, datetime) else str(self.date_creation)
+        status_str = "Active" if self.status else "Inactive"
+        return (
+            f"Usuario: {self.username}, Nombre: {self.name}, Email: {self.email}, "
+            f"Rol: {self.role}, Fecha de creación: {date_str}, Estado: {status_str}"
+        )
+    
+    def verify_user(self, username: str, password: str) -> bool:
+        return self.username == username and self.password == password
+    
