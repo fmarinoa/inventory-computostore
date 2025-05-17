@@ -25,12 +25,23 @@ def mostrar_menu_gestion_productos():
             modificar_producto()
         elif op == "4":
             eliminar_producto()
-        # elif op == "5":
-        #     buscar_producto_por_codigo()
+        elif op == "5":
+            buscar_producto_por_codigo()
         elif op == "6":
             break
         else:
             print("Opción no válida.")
+
+
+def buscar_producto_por_codigo():
+    id_producto = input("Ingrese el ID del producto a buscar: ")
+    producto_encontrado = _buscar_producto_por_id(id_producto)
+
+    if producto_encontrado is None:
+        print("Producto no encontrado.")
+        return
+
+    print(f"Producto encontrado: {producto_encontrado.get_product_info()}")
 
 
 def eliminar_producto():
@@ -58,7 +69,7 @@ def modificar_producto():
     nuevos_datos = _obtener_nuevos_datos_producto(producto_encontrado)
     _actualizar_producto(producto_encontrado, nuevos_datos)
 
-    print(f"Producto modificado con éxito: {producto_encontrado}")
+    print(f"Producto modificado con éxito: {producto_encontrado.name}")
 
 
 def _buscar_producto_por_id(id_producto):
