@@ -1,5 +1,6 @@
 from app.exceptions.auth_exceptions import IncorrectPasswordError, UserNotFoundError, UserInactiveError
 from app.models.user import User
+from app.views.menu_home import mostrar_menu_home
 
 
 def login_view(user: User):
@@ -15,3 +16,5 @@ def login_view(user: User):
 
     if not user.verify_status():
         print(UserInactiveError())
+
+    mostrar_menu_home()
