@@ -74,7 +74,12 @@ class User:
             f"Usuario: {self.username}, Nombre: {self.name}, Email: {self.email}, "
             f"Rol: {self.role}, Fecha de creación: {date_str}, Estado: {status_str}"
         )
+
+    def verify_user(self, username) -> bool:
+        return self.username == username
+
+    def verify_password(self, password) -> bool:
+        return self.password == password
     
-    def verify_user(self, username: str, password: str) -> bool:
-        return self.username == username and self.password == password
-    
+    def verify_status(self) -> bool:
+        return self.status
