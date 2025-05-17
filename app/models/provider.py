@@ -8,7 +8,7 @@ class Provider:
         self.__phone = phone
         self.__email = email
         self.__address = address
-        self.__prodcuts = []
+        self.__products = []
 
     @property
     def name(self):
@@ -49,21 +49,25 @@ class Provider:
     @address.setter
     def address(self, address: str):
         self.__address = address
+        
+    @property
+    def products(self):
+        return self.__products
 
     def __str__(self):
         return (
             f"Nombre: {self.__name}, Contacto: {self.__contact}, Teléfono: {self.__phone}, Email: {self.__email},"
-            f" Dirección: {self.__address}, Productos: {len(self.__prodcuts)}"
-            f" ({', '.join([str(product) for product in self.__prodcuts])})"
+            f" Dirección: {self.__address}, Productos: {len(self.products)}"
+            f" ({', '.join([str(product) for product in self.products])})"
         )
 
     def add_product(self, product: Product):
-        self.__prodcuts.append(product)
+        self.products.append(product)
         product.provider = self
         
     def remove_product(self, product: Product):
-        if product in self.__prodcuts:
-            self.__prodcuts.remove(product)
+        if product in self.products:
+            self.products.remove(product)
             product.provider = None
             
     def show_info(self):
