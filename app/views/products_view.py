@@ -1,3 +1,4 @@
+from datetime import datetime
 from decimal import Decimal
 
 from app.data.store import main_products
@@ -68,6 +69,7 @@ def modificar_producto():
 
     nuevos_datos = _obtener_nuevos_datos_producto(producto_encontrado)
     _actualizar_producto(producto_encontrado, nuevos_datos)
+    producto_encontrado.date_update = datetime.now()
 
     print(f"Producto modificado con éxito: {producto_encontrado.name}")
 
