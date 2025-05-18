@@ -10,27 +10,27 @@ class Movement:
         self.__client = client
         self.amount = amount
         self.date = datetime.now()
-    
+
     @property
     def product(self):
-        return self.__product    
-    
+        return self.__product
+
     @product.setter
     def product(self, product: Product):
         self.__product = product
-        
+
     @property
     def client(self):
         return self.__client
-    
+
     @client.setter
     def client(self, client: Client):
-        self.__client = client        
-    
+        self.__client = client
+
     @property
     def amount(self):
         return self.__amount
-    
+
     @amount.setter
     def amount(self, amount: int):
         self.__amount = amount

@@ -36,7 +36,7 @@ def mostrar_menu_gestion_productos():
 
 def buscar_producto_por_codigo():
     id_producto = input("Ingrese el ID del producto a buscar: ")
-    producto_encontrado = _buscar_producto_por_id(id_producto)
+    producto_encontrado = buscar_producto_por_id(id_producto)
 
     if producto_encontrado is None:
         print("Producto no encontrado.")
@@ -47,7 +47,7 @@ def buscar_producto_por_codigo():
 
 def eliminar_producto():
     id_producto = input("Ingrese el ID del producto a eliminar: ")
-    producto_encontrado = _buscar_producto_por_id(id_producto)
+    producto_encontrado = buscar_producto_por_id(id_producto)
 
     if producto_encontrado is None:
         print("Producto no encontrado.")
@@ -59,7 +59,7 @@ def eliminar_producto():
 
 def modificar_producto():
     id_producto = input("Ingrese el ID del producto a modificar: ")
-    producto_encontrado = _buscar_producto_por_id(id_producto)
+    producto_encontrado = buscar_producto_por_id(id_producto)
 
     if producto_encontrado is None:
         print("Producto no encontrado.")
@@ -74,7 +74,7 @@ def modificar_producto():
     print(f"Producto modificado con éxito: {producto_encontrado.name}")
 
 
-def _buscar_producto_por_id(id_producto):
+def buscar_producto_por_id(id_producto):
     for p in main_products:
         if p.id_product == id_producto:
             return p

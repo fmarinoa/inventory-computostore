@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from app.data.store import main_movements
 from app.models.movement import Movement
 from app.models.product import Product
 
@@ -70,3 +71,4 @@ class Client:
         product.purchases.append(movement)
         product.remove_stock(quantity)
         product.date_update = datetime.now()
+        main_movements.append(movement)
