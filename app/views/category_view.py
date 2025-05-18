@@ -48,13 +48,7 @@ def listar_categorias():
         print("No hay categorías registradas.")
     else:
         for i, categoria in enumerate(main_categories, start=1):
-            print(f"{i}. {categoria.name} - Descripción: {categoria.description}")
-            if categoria.products:
-                print("   Productos en esta categoría:")
-                for producto in categoria.products:
-                    print(f"   - {producto.name}")
-            else:
-                print("   No hay productos en esta categoría.")
+            print(f"{i}. {categoria.show_info()}")
     print("--- FIN DE CATEGORÍAS ---")
 
 
