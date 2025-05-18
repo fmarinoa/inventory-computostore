@@ -35,7 +35,7 @@ class Category:
     
     def __str__(self):
         return (
-            f"Nombre: {self.name}, Descripción: {self.description}, Productos: {len(self.products)}"
+            f"Id: {self.id}, Nombre: {self.name}, Descripción: {self.description}, Productos: {len(self.products)}"
             f" ({', '.join([str(product.name) for product in self.products])})"
         )
     

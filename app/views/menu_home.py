@@ -3,6 +3,7 @@ from app.views.category_view import mostrar_menu_gestion_categorias
 from app.views.control_stock_view import mostrar_menu_control_stock
 from app.views.movement_purchase_view import mostrar_menu_gestion_movimientos_compras
 from app.views.products_view import mostrar_menu_gestion_productos
+from app.views.provider_view import mostrar_menu_gestion_proveedores
 
 
 def mostrar_menu_home():
@@ -28,8 +29,8 @@ def mostrar_menu_home():
             mostrar_menu_gestion_movimientos_compras()
         elif opcion == "4":
             mostrar_menu_gestion_categorias()
-        # elif opcion == "5":
-        #     mostrar_menu_gestion_proveedores()
+        elif opcion == "5":
+            mostrar_menu_gestion_proveedores()
         # elif opcion == "6":
         #     mostrar_menu_gestion_clientes()
         elif opcion == "7":

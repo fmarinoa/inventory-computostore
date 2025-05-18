@@ -2,13 +2,22 @@ from app.models.product import Product
 
 
 class Provider:
-    def __init__(self, name: str, contact: str, phone: str, email: str, address: str):
+    def __init__(self, id:str, name: str, contact: str, phone: str, email: str, address: str):
+        self.__id = id
         self.__name = name
         self.__contact = contact
         self.__phone = phone
         self.__email = email
         self.__address = address
         self.__products = []
+
+    @property
+    def id(self):
+        return self.__id
+    
+    @id.setter
+    def id(self, id: str):
+        self.__id = id
 
     @property
     def name(self):
@@ -56,8 +65,8 @@ class Provider:
 
     def __str__(self):
         return (
-            f"Nombre: {self.__name}, Contacto: {self.__contact}, Teléfono: {self.__phone}, Email: {self.__email},"
-            f" Dirección: {self.__address}, Productos: {len(self.products)}"
+            f"Id: {self.id} ,Nombre: {self.__name}, Contacto: {self.__contact}, Teléfono: {self.__phone},"
+            f" Email: {self.__email}, Dirección: {self.__address}, Productos: {len(self.products)}"
             f" ({', '.join([str(product) for product in self.products])})"
         )
 
