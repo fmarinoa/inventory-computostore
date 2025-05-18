@@ -1,7 +1,5 @@
 from datetime import datetime
 
-from app.data.store import main_movements
-from app.models.movement import Movement
 from app.models.product import Product
 
 
@@ -66,6 +64,12 @@ class Client:
         )
 
     def purchase(self, product: Product, quantity: int):
+        from app.data.store import main_movements
+        from app.models.movement import Movement
+
+        if quantity > product.stock:
+            raise ValueError("No hay suficiente stock disponible.")
+
         movement = Movement(product, self, quantity)
         self.purchases.append(movement)
         product.purchases.append(movement)
