@@ -30,7 +30,7 @@ def mostrar_menu_gestion_categorias():
 
 def registrar_categoria():
     print("Registrar nueva categoría")
-    id = input("Ingrese el nombre de la categoría: ")
+    id = input("Ingrese el ID de la categoría: ")
     nombre = input("Ingrese el nombre de la categoría: ")
     descripcion = input("Ingrese la descripción de la categoría: ")
 

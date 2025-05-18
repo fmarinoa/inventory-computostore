@@ -141,8 +141,8 @@ class Product(ABC):
             f"ID: {self.id_product}, Nombre: {self.name}, Descripción: {self.description}, "
             f"Marca: {self.brand}, Modelo: {self.model}, Número de serie: {self.serial_number}, "
             f"Stock: {self.stock}, Precio: {self.price}, Tipo de producto: {self.type_product}, "
-            f"Stock mínimo: {self.minimum_stock}, Última actualización: {date_str}, Proveedor: {self.provider}, "
-            f"Categoría: {self.category}, Compras: {len(self.purchases)}"
+            f"Stock mínimo: {self.minimum_stock}, Última actualización: {date_str}, Proveedor: {self.provider.name}, "
+            f"Categoría: {self.category.name}, Compras: {len(self.purchases)}"
             f" ({', '.join([str(purchase) for purchase in self.purchases])})"
         )
 
