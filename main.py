@@ -1,8 +1,7 @@
 from app.exceptions.auth_exceptions import AuthenticationError
 from app.models.user import User
-
 from app.views.login_view import login_view
-
+from app.models.client import Client
 
 def main_menu(user: User):
     while True:

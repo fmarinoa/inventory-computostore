@@ -135,17 +135,32 @@ class Product(ABC):
     def purchases(self, purchases):
         self.__purchases = purchases
 
-    def __str__(self):
+    """def __str__(self):
         date_str = self.date_update.strftime("%d/%m/%Y %H:%M:%S") if isinstance(self.date_update, datetime) else str(self.date_update)
         return (
             f"ID: {self.id_product}, Nombre: {self.name}, Descripción: {self.description}, "
             f"Marca: {self.brand}, Modelo: {self.model}, Número de serie: {self.serial_number}, "
             f"Stock: {self.stock}, Precio: {self.price}, Tipo de producto: {self.type_product}, "
-            f"Stock mínimo: {self.minimum_stock}, Última actualización: {date_str}, Proveedor: {self.provider.name}, "
+            f"Stock mínimo: {self.minimum_stock}, Última actualización: {date_str}, Proveedor: {self.provider.name}, " ###aqui
             f"Categoría: {self.category.name}, Compras: {len(self.purchases)}"
             f" ({', '.join([str(purchase) for purchase in self.purchases])})"
-        )
+        )"""
 
+    def __str__(self):
+        date_str = self.date_update.strftime("%d/%m/%Y %H:%M:%S") if isinstance(self.date_update, datetime) else str(
+            self.date_update)
+
+        provider_name = self.provider.name if self.provider is not None else "Sin proveedor"
+        category_name = self.category.name if self.category is not None else "Sin categoría"
+
+        return (
+            f"ID: {self.id_product}, Nombre: {self.name}, Descripción: {self.description}, "
+            f"Marca: {self.brand}, Modelo: {self.model}, Número de serie: {self.serial_number}, "
+            f"Stock: {self.stock}, Precio: {self.price}, Tipo de producto: {self.type_product}, "
+            f"Stock mínimo: {self.minimum_stock}, Última actualización: {date_str}, "
+            f"Proveedor: {provider_name}, Categoría: {category_name}, "
+            f"Compras: {len(self.purchases)} ({', '.join([str(purchase) for purchase in self.purchases])})"
+        )
     @abstractmethod
     def get_product_info(self):
         pass
