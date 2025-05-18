@@ -1,8 +1,17 @@
 class Category:
-    def __init__(self, name: str, description: str, products: list = None):
+    def __init__(self, id: str, name: str, description: str, products: list = None):
+        self.__id = id
         self.__name = name
         self.__description = description
         self.__products = products if products is not None else []
+
+    @property
+    def id(self):
+        return self.__id
+    
+    @id.setter
+    def id(self, id: str):
+        self.__id = id
 
     @property
     def name(self):
@@ -27,7 +36,7 @@ class Category:
     def __str__(self):
         return (
             f"Nombre: {self.name}, Descripción: {self.description}, Productos: {len(self.products)}"
-            f" ({', '.join([str(product) for product in self.products])})"
+            f" ({', '.join([str(product.name) for product in self.products])})"
         )
     
     def add_product(self, product):
