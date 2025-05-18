@@ -204,7 +204,7 @@ def registrar_producto():
     elif tipo_producto == 2:
         ram = input("Ingrese la cantidad de RAM del hardware: ")
         almacenamiento = input("Ingrese la capacidad de almacenamiento del hardware: ")
-        procesador = input("Ingrese el tipo de procesador del hardware: ")
+        procesador = input("Ingrese el tipo de procesador del hardware si es necesario. De lo contrario, ignorar: ")
 
         product = ProductHardware(
             id_product=id_producto,
