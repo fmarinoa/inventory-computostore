@@ -157,7 +157,7 @@ def _actualizar_producto(producto, datos):
 def listar_productos():
     print("Listado de productos")
     for p in main_products:
-        print(p)
+        print(p.get_product_info())
 
 
 def registrar_producto():
