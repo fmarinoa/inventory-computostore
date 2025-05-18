@@ -23,16 +23,14 @@ def mostrar_menu_home():
         elif opcion == "2":
             mostrar_menu_control_stock()
         # elif opcion == "3":
-        #     mostrar_menu_historial()
+        #     mostrar_menu_gestion_movimientos_compras()
         # elif opcion == "4":
         #     mostrar_menu_gestion_categorias()
         # elif opcion == "5":
         #     mostrar_menu_gestion_proveedores()
         # elif opcion == "6":
         #     mostrar_menu_gestion_clientes()
-        # elif opcion == "7":
-        #     mostrar_menu_gestion_usuarios()
-        elif opcion == "8":
+        elif opcion == "7":
             print("\nGracias por usar ComputoStore. ¡Hasta pronto!")
             break
         else:
