@@ -21,8 +21,8 @@ def mostrar_menu_control_stock():
 
 
 def obtener_productos_bajo_stock():
-    #return [p for p in main_products if p.stock < p.minimum_stock]  original
-    return [p for p in main_products if p.stock > p.minimum_stock]  #reemplazo
+    return [p for p in main_products if p.stock <= p.minimum_stock]
+
 
 def mostrar_productos_bajo_stock(lista_productos):
     if not lista_productos:
@@ -32,7 +32,7 @@ def mostrar_productos_bajo_stock(lista_productos):
         for i, producto in enumerate(lista_productos, start=1):
             print(
                 f"{i}. {producto.name} - Stock: {producto.stock} - Stock mínimo: {producto.minimum_stock} - Precio:"
-                f" {producto.price} - Proveedor: {producto.provider} - Categoría: {producto.category}")
+                f" {producto.price} - Proveedor: {producto.provider.name} - Categoría: {producto.category.name}")
 
 
 def actualizar_stock_productos(lista_productos):

@@ -12,9 +12,10 @@ cliente3 = Client("CLI003", "HENRY MONDRAGON", "951357852", "henry@gmail.com", "
 main_clients = [cliente1, cliente2, cliente3]
 
 # === CATEGORÍAS ===
-categoria1 = Category("CAT001", "Hardware", "Equipos y componentes informáticos")
-categoria2 = Category("CAT002", "Software", "Licencias y programas informáticos")
-main_categories = [categoria1, categoria2]
+categoria1 = Category("CAT001", "Laptops", "Laptops y perifericos")
+categoria2 = Category("CAT002", "Celulares", "Celulares de todas las gamas")
+categoria3 = Category("CAT002", "Licencias", "Licencias y programas informáticos")
+main_categories = [categoria1, categoria2, categoria3]
 
 # === PROVEEDORES ===
 proveedor1 = Provider(
@@ -45,7 +46,7 @@ producto1 = ProductHardware(
     brand="HP",
     model="Pavilion 15",
     serial_number="SN123456789",
-    stock=90,
+    stock=9,
     price=Decimal("1200.00"),
     minimum_stock=10,
     ram="16GB",
@@ -53,6 +54,8 @@ producto1 = ProductHardware(
     processor="Intel i7"
 )
 categoria1.add_product(producto1)
+proveedor1.add_product(producto1)
+
 producto2 = ProductSoftware(
     id_product="PROD002",
     name="Microsoft Office 365",
@@ -65,7 +68,9 @@ producto2 = ProductSoftware(
     minimum_stock=20,
     type_license="Suscripción anual"
 )
-categoria2.add_product(producto2)
+categoria3.add_product(producto2)
+proveedor1.add_product(producto2)
+
 producto3 = ProductHardware(
     id_product="PROD003",
     name="Smartphone Samsung Galaxy S25",
@@ -80,7 +85,9 @@ producto3 = ProductHardware(
     storage="256GB",
     processor="Snapdragon 8 Gen 3"
 )
-categoria1.add_product(producto3)
+categoria2.add_product(producto3)
+proveedor2.add_product(producto3)
+
 main_products = [producto1, producto2, producto3]
 
 # === MOVIMIENTOS ===

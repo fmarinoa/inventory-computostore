@@ -65,9 +65,9 @@ class Provider:
 
     def __str__(self):
         return (
-            f"Id: {self.id} ,Nombre: {self.__name}, Contacto: {self.__contact}, Teléfono: {self.__phone},"
+            f"Id: {self.id}, Nombre: {self.__name}, Contacto: {self.__contact}, Teléfono: {self.__phone},"
             f" Email: {self.__email}, Dirección: {self.__address}, Productos: {len(self.products)}"
-            f" ({', '.join([str(product) for product in self.products])})"
+            f" ({', '.join([str(product.name) for product in self.products])})"
         )
 
     def add_product(self, product: Product):
