@@ -1,19 +1,15 @@
-#from app.models.client import Client
-from app.models.client import Client
-from app.models.category import Category
-from app.models.provider import Provider
-from app.models.product import Product
-from app.models.movement import Movement
-from app.models.product import ProductHardware, ProductSoftware
 from decimal import Decimal
 
+from app.models.category import Category
+from app.models.client import Client
+from app.models.product import ProductHardware, ProductSoftware
+from app.models.provider import Provider
 
-
+# === CLIENTES ===
 cliente1 = Client("CLI001", "FRANCO MARIÑO", "987654321", "franco@gmail.com", "Av. La Marina 2512")
 cliente2 = Client("CLI002", "EDSON AQUISE", "963258741", "edson@gmail.com", "Av. La Marina 2531")
 cliente3 = Client("CLI003", "HENRY MONDRAGON", "951357852", "henry@gmail.com", "Av. La Marina 2122")
 main_clients = [cliente1, cliente2, cliente3]
-
 
 # === CATEGORÍAS ===
 categoria1 = Category("CAT001", "Hardware", "Equipos y componentes informáticos")
@@ -88,32 +84,7 @@ categoria1.add_product(producto3)
 main_products = [producto1, producto2, producto3]
 
 # === MOVIMIENTOS ===
-movimiento1 = Movement(
-    product=producto1,   # Producto creado antes
-    client=cliente1,     # Cliente ya definido
-    amount=5             # Cantidad vendida
-)
-
-movimiento2 = Movement(
-    product=producto2,
-    client=cliente2,
-    amount=2
-)
-
-movimiento3 = Movement(
-    product=producto3,
-    client=cliente3,
-    amount=1
-)
-main_movements = [movimiento1, movimiento2, movimiento3]
-
-
-
-
-
-"""
-main_products = []
 main_movements = []
-main_categories = []
-main_providers = []
-"""
+cliente1.purchase(producto1, 5)
+cliente2.purchase(producto2, 2)
+cliente3.purchase(producto3, 1)
