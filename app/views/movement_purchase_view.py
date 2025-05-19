@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from app.data.store import main_clients
 from app.views.client_view import buscar_cliente_por_id
 from app.views.products_view import buscar_producto_por_id
@@ -51,7 +53,8 @@ def mostar_movimientos():
     for cliente in main_clients:
         print(f"Cliente: {cliente.name}")
         for movimiento in cliente.purchases:
-            # print(f"  Producto: {movimiento['product'].name}, Cantidad: {movimiento['amount']}")  se esta cambiando
-            print(f"  Producto: {movimiento.product.name}, Cantidad: {movimiento.amount}")
+            date_str = movimiento.date.strftime("%d/%m/%Y %H:%M:%S") if isinstance(movimiento.date, datetime) else str(
+                movimiento.date)
+            print(f"  Producto: {movimiento.product.name}, Cantidad: {movimiento.amount}, Fecha y hora: {date_str}")
 
     print("\n--- FIN DE MOVIMIENTOS ---")
