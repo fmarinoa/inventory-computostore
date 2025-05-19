@@ -114,23 +114,23 @@ class Product(ABC):
     @property
     def provider(self):
         return self.__provider
-    
+
     @provider.setter
     def provider(self, provider):
         self.__provider = provider
-        
+
     @property
     def category(self):
         return self.__category
-    
-    @category.setter 
+
+    @category.setter
     def category(self, category):
         self.__category = category
-        
+
     @property
     def purchases(self):
         return self.__purchases
-    
+
     @purchases.setter
     def purchases(self, purchases):
         self.__purchases = purchases
@@ -161,6 +161,7 @@ class Product(ABC):
             f"Proveedor: {provider_name}, Categoría: {category_name}, "
             f"Compras: {len(self.purchases)} ({', '.join([str(purchase) for purchase in self.purchases])})"
         )
+
     @abstractmethod
     def get_product_info(self):
         pass
@@ -180,7 +181,7 @@ class Product(ABC):
 
     def update_stock(self, stock: int):
         stock = ProductValidators.validate_stock(stock)
-        self.stock = stock
+        self.stock += stock
         self.date_update = datetime.now()
 
     def assign_discount(self, discount):

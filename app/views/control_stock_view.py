@@ -1,4 +1,6 @@
 from app.data.store import main_products
+from app.utils.console_util import limpiar_pantalla
+from app.views.products_view import buscar_producto_por_id
 
 
 def mostrar_menu_control_stock():
@@ -21,7 +23,7 @@ def mostrar_menu_control_stock():
 
 
 def obtener_productos_bajo_stock():
-    return [p for p in main_products if p.stock <= p.minimum_stock]
+    return [p for p in main_products if p.stock < p.minimum_stock]
 
 
 def mostrar_productos_bajo_stock(lista_productos):
@@ -40,22 +42,24 @@ def actualizar_stock_productos(lista_productos):
         print("No hay productos con stock bajo para actualizar.")
         return
 
+    limpiar_pantalla()
     print("\n--- ACTUALIZAR STOCK DE PRODUCTOS ---")
     for i, producto in enumerate(lista_productos, start=1):
-        print(f"{i}. {producto.name} - Stock actual: {producto.stock}")
+        print(f"{i}. {producto.id_product} - {producto.name} - Stock actual: {producto.stock}")
 
-    opcion = input("Selecciona el número del producto a actualizar (o 'q' para salir): ")
+    opcion = input("Selecciona el código del producto a actualizar (o 'q' para salir): ")
 
     if opcion.lower() == 'q':
         return
 
     try:
-        index = int(opcion) - 1
-        if index < 0 or index >= len(lista_productos):
-            raise ValueError("Número de producto no válido.")
+        producto_encontrado = buscar_producto_por_id(opcion)
 
-        nuevo_stock = int(input("Ingrese el nuevo stock: "))
-        lista_productos[index].stock = nuevo_stock
-        print(f"Stock actualizado para {lista_productos[index].name}. Nuevo stock: {nuevo_stock}")
-    except ValueError as e:
+        if producto_encontrado is None:
+            raise ValueError("Código de producto no existe.")
+
+        nuevo_stock = input("Ingrese el nuevo stock: ")
+        producto_encontrado.update_stock(nuevo_stock)
+        print(f"Stock actualizado para {producto_encontrado.name}. Nuevo stock: {nuevo_stock}")
+    except Exception as e:
         print(f"Error: {e}")
