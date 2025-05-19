@@ -58,8 +58,8 @@ def actualizar_stock_productos(lista_productos):
         if producto_encontrado is None:
             raise ValueError("Código de producto no existe.")
 
-        nuevo_stock = input("Ingrese el nuevo stock: ")
+        nuevo_stock = input("Ingrese el stock a añadir: ")
         producto_encontrado.update_stock(nuevo_stock)
-        print(f"Stock actualizado para {producto_encontrado.name}. Nuevo stock: {nuevo_stock}")
+        print(f"Stock actualizado para {producto_encontrado.name} - Stock añadido: {nuevo_stock}")
     except Exception as e:
         print(f"Error: {e}")
