@@ -103,9 +103,17 @@ def eliminar_cliente():
     main_clients.remove(cliente_encontrado)
     print(f"Cliente {cliente_encontrado.name} eliminado con éxito.")
 
-
+""" original
 def buscar_cliente_por_id(id):
     for p in main_clients:
-        if p.id_product == id:
+        if p.id_product == id: original
+        if p.id == id:  #cambio agregado
             return p
     return None
+"""
+### agregado
+
+def buscar_cliente_por_id(id):
+    for cliente in main_clients:
+        if cliente.client_id == id:
+            return cliente

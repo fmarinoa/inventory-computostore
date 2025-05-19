@@ -48,8 +48,9 @@ def mostar_movimientos():
     for cliente in main_clients:
         print(f"Cliente: {cliente.name}")
         for movimiento in cliente.purchases:
-            print(f"  Producto: {movimiento['product'].name}, Cantidad: {movimiento['amount']}")
-    
+            #print(f"  Producto: {movimiento['product'].name}, Cantidad: {movimiento['amount']}")  se esta cambiando
+            print(f"  Producto: {movimiento.product.name}, Cantidad: {movimiento.amount}")
+
     print("\n--- FIN DE MOVIMIENTOS ---")
     
     

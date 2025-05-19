@@ -21,8 +21,8 @@ def mostrar_menu_control_stock():
 
 
 def obtener_productos_bajo_stock():
-    return [p for p in main_products if p.stock < p.minimum_stock]
-
+    #return [p for p in main_products if p.stock < p.minimum_stock]  original
+    return [p for p in main_products if p.stock > p.minimum_stock]  #reemplazo
 
 def mostrar_productos_bajo_stock(lista_productos):
     if not lista_productos:

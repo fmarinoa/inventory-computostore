@@ -7,6 +7,8 @@ from app.models.movement import Movement
 from app.models.product import ProductHardware, ProductSoftware
 from decimal import Decimal
 
+
+
 cliente1 = Client("CLI001", "FRANCO MARIÑO", "987654321", "franco@gmail.com", "Av. La Marina 2512")
 cliente2 = Client("CLI002", "EDSON AQUISE", "963258741", "edson@gmail.com", "Av. La Marina 2531")
 cliente3 = Client("CLI003", "HENRY MONDRAGON", "951357852", "henry@gmail.com", "Av. La Marina 2122")
@@ -47,14 +49,14 @@ producto1 = ProductHardware(
     brand="HP",
     model="Pavilion 15",
     serial_number="SN123456789",
-    stock=10,
+    stock=90,
     price=Decimal("1200.00"),
-    minimum_stock=5,
+    minimum_stock=10,
     ram="16GB",
     storage="512GB SSD",
     processor="Intel i7"
 )
-
+categoria1.add_product(producto1)
 producto2 = ProductSoftware(
     id_product="PROD002",
     name="Microsoft Office 365",
@@ -62,12 +64,12 @@ producto2 = ProductSoftware(
     brand="Microsoft",
     model="Office 365",
     serial_number="SN987654321",
-    stock=50,
+    stock=100,
     price=Decimal("150.00"),
-    minimum_stock=10,
+    minimum_stock=20,
     type_license="Suscripción anual"
 )
-
+categoria2.add_product(producto2)
 producto3 = ProductHardware(
     id_product="PROD003",
     name="Smartphone Samsung Galaxy S25",
@@ -75,14 +77,14 @@ producto3 = ProductHardware(
     brand="Samsung",
     model="Galaxy S25",
     serial_number="SN987000123",
-    stock=25,
+    stock=55,
     price=Decimal("900.00"),
-    minimum_stock=5,
+    minimum_stock=50,
     ram="12GB",
     storage="256GB",
     processor="Snapdragon 8 Gen 3"
 )
-
+categoria1.add_product(producto3)
 main_products = [producto1, producto2, producto3]
 
 # === MOVIMIENTOS ===
